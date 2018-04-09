@@ -1,0 +1,40 @@
+{
+  "name": "@aragon/web",
+  "version": "0.1.0",
+  "author": "Aragon Institution MTU <contact@aragon.one>",
+  "license": "MIT",
+  "description": "Aragon components for websites",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "private": true,
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w"
+  },
+  "peerDependencies": {
+    "@aragon/ui": "^0.11.0",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "styled-components": "^3.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-inline-json-import": "^0.2.1",
+    "babel-plugin-styled-components": "^1.5.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "rollup": "^0.57.1",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-commonjs": "^9.1.0",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-progress": "^0.4.0",
+    "rollup-plugin-url": "^1.3.0"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.1",
+    "react-motion": "^0.5.2",
+    "react-onclickout": "^2.0.8"
+  }
+}

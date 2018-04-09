@@ -1,0 +1,9 @@
+{
+  "plugins": [
+    ["inline-json-import", {}],
+    ["styled-components", {
+      "displayName": true
+    }]
+  ],
+  "presets": [["env", { "modules": false }], "react", "stage-2", "flow"]
+}
