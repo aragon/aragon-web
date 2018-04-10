@@ -41,7 +41,9 @@ const StyledFooter = styled.footer`
   .menus {
     display: flex;
   }
-  .menu-1, .menu-2, .menu-3 {
+  .menu-1,
+  .menu-2,
+  .menu-3 {
     margin-right: 35px;
   }
   .social-links {
@@ -179,7 +181,9 @@ const Footer = ({ compact }) => (
                   <a href="https://aragon.one/join">Join us</a>
                 </li>
                 <li>
-                  <a href="https://blog.aragon.one/" target="_blank">Blog</a>
+                  <a href="https://blog.aragon.one/" target="_blank">
+                    Blog
+                  </a>
                 </li>
               </ul>
             </nav>
@@ -187,7 +191,9 @@ const Footer = ({ compact }) => (
               <ul>
                 <li>
                   <strong>
-                    <a href="https://app.aragon.one/" target="_blank">Try Aragon Core 0.5</a>
+                    <a href="https://app.aragon.one/" target="_blank">
+                      Try Aragon Core 0.5
+                    </a>
                   </strong>
                 </li>
                 <li>
@@ -197,7 +203,12 @@ const Footer = ({ compact }) => (
                   <a href="mailto:media@aragon.one">Media/Press Inquiries</a>
                 </li>
                 <li>
-                  <a href="https://wiki.aragon.one/press/press-kit/" target="_blank">Press Kit</a>
+                  <a
+                    href="https://wiki.aragon.one/press/press-kit/"
+                    target="_blank"
+                  >
+                    Press Kit
+                  </a>
                 </li>
               </ul>
             </nav>

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { Button, grid, colors, themeDark, breakpoint } from '@aragon/ui'
 import Section from '../Section/Section'
 
@@ -34,7 +34,7 @@ const Container = styled(Section).attrs({ visual: true })`
     width: 100%;
     background: url(${logo}) no-repeat 50% 50%;
     background-size: 140px;
-    ${large(`background-size: 200px;`)};
+    ${large('background-size: 200px;')};
   }
   .section {
     display: flex;

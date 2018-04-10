@@ -1,0 +1,8 @@
+{
+  "rules": {
+    "quotes": ["error", "single"],
+    "jsx-quotes": ["error", "prefer-double"],
+    "comma-dangle": ["error", "always-multiline" ],
+    "space-before-function-paren": ["error", "never" ]
+  }
+}

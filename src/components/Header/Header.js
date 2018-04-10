@@ -91,7 +91,7 @@ const StyledHeader = styled.div`
   }};
 `
 
-const Header = ({ title, menuItems, renderMenuItemLink }: Props) => (
+const Header = ({ title, menuItems, renderMenuItemLink }) => (
   <StyledHeader withTitle={Boolean(title)}>
     <div className="in">
       <div className="menu">
