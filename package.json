@@ -9,7 +9,7 @@
   "scripts": {
     "lint": "standardx --fix --verbose --parser babel-eslint 'src/**/*.js' | snazzy",
     "format": "prettier-standard 'src/**/*.js'",
-    "test": "npm run lint",
+    "test": "standardx --fix --verbose --parser babel-eslint 'src/**/*.js'",
     "build": "rollup -c",
     "dev": "rollup -c -w"
   },
@@ -46,7 +46,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run format && npm test",
+      "pre-commit": "npm run format",
       "pre-push": "npm run format && npm test"
     }
   }
