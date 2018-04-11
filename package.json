@@ -6,7 +6,6 @@
   "description": "Aragon components for websites",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
-  "private": true,
   "scripts": {
     "lint": "standardx --fix --verbose --parser babel-eslint 'src/**/*.js' | snazzy",
     "format": "prettier-standard 'src/**/*.js'",
