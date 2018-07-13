@@ -152,16 +152,16 @@ const Footer = ({ compact }) => (
             <nav className="menu-1">
               <ul>
                 <li>
-                  <a href="https://aragon.one/core">Users</a>
+                  <a href="/core">Users</a>
                 </li>
                 <li>
                   <a href="https://hack.aragon.org/">Developers</a>
                 </li>
                 <li>
-                  <a href="https://aragon.one/network">Network</a>
+                  <a href="/network">Network</a>
                 </li>
                 <li>
-                  <a href="https://aragon.one/about">About</a>
+                  <a href="/about">About</a>
                 </li>
               </ul>
             </nav>
@@ -178,7 +178,7 @@ const Footer = ({ compact }) => (
                   </a>
                 </li>
                 <li>
-                  <a href="https://aragon.one/join">Join us</a>
+                  <a href="/contribute">Contribute</a>
                 </li>
                 <li>
                   <a href="https://blog.aragon.one/" target="_blank">
