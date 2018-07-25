@@ -1,6 +1,6 @@
 {
   "name": "@aragon/web",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Aragon Institution MTU <contact@aragon.one>",
   "license": "MIT",
   "description": "Aragon components for websites",
