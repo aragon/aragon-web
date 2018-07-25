@@ -4,9 +4,6 @@ import styled from 'styled-components'
 import { colors, themeDark, breakpoint, grid } from '@aragon/ui'
 
 import logo from './assets/logo.svg'
-import iconTwitter from './assets/twitter.svg'
-import iconMedium from './assets/medium.svg'
-import iconRocket from './assets/rocket.svg'
 
 const medium = css => breakpoint('medium', css)
 const large = css => breakpoint('large', css)
@@ -73,15 +70,6 @@ const StyledFooter = styled.footer`
     color: ${themeDark.accent};
     font-weight: 400;
   }
-  .icon.twitter {
-    background-image: url(${iconTwitter});
-  }
-  .icon.medium {
-    background-image: url(${iconMedium});
-  }
-  .icon.rocket {
-    background-image: url(${iconRocket});
-  }
 
   ${medium(`
     padding-bottom: 70px;
@@ -140,120 +128,87 @@ const StyledFooter = styled.footer`
   `)};
 `
 
-const Footer = ({ compact }) => (
-  <StyledFooter compact={compact}>
-    <div className="main">
-      <div className="logo">
-        <img src={logo} width="158" height="50" alt="Aragon" />
-      </div>
-      <div className="all-links">
-        {!compact && (
-          <div className="menus">
-            <nav className="menu-1">
-              <ul>
-                <li>
-                  <a href="/core">Users</a>
-                </li>
-                <li>
-                  <a href="https://hack.aragon.org/">Developers</a>
-                </li>
-                <li>
-                  <a href="/network">Network</a>
-                </li>
-                <li>
-                  <a href="/about">About</a>
-                </li>
-              </ul>
-            </nav>
-            <nav className="menu-2">
-              <ul>
-                <li>
-                  <a href="https://wiki.aragon.one" target="_blank">
-                    Wiki
-                  </a>
-                </li>
-                <li>
-                  <a href="https://github.com/aragon" target="_blank">
-                    Code
-                  </a>
-                </li>
-                <li>
-                  <a href="/contribute">Contribute</a>
-                </li>
-                <li>
-                  <a href="https://blog.aragon.one/" target="_blank">
-                    Blog
-                  </a>
-                </li>
-              </ul>
-            </nav>
-            <nav className="menu-3">
-              <ul>
-                <li>
-                  <strong>
-                    <a href="https://app.aragon.one/" target="_blank">
-                      Try Aragon Core 0.5
-                    </a>
-                  </strong>
-                </li>
-                <li>
-                  <a href="mailto:contact@aragon.one">Contact Us</a>
-                </li>
-                <li>
-                  <a href="mailto:media@aragon.one">Media/Press Inquiries</a>
-                </li>
-                <li>
-                  <a
-                    href="https://wiki.aragon.one/press/press-kit/"
-                    target="_blank"
-                  >
-                    Press Kit
-                  </a>
-                </li>
-              </ul>
-            </nav>
+const FooterLink = ({ label, url, icon, external, strong }) => {
+  const props = { children: label, href: url }
+  if (external) {
+    props.target = '_blank'
+  }
+  if (icon) {
+    props.className = 'icon'
+    props.style = { backgroundImage: `url(${icon})` }
+  }
+  const link = <a {...props} />
+  if (strong) {
+    return <strong>{link}</strong>
+  }
+  return link
+}
+
+class Footer extends React.Component {
+  menus() {
+    const menus = this.props.menus.map(items =>
+      items.map(([label, url, icon = null]) => ({
+        label: label.replace(/^\*/, ''),
+        url,
+        icon,
+        external: /^https?:\/\//.test(url),
+        strong: label.startsWith('*'),
+      }))
+    )
+    return {
+      groups: menus.slice(0, -1).slice(0, 3),
+      socialLinks: menus[menus.length - 1],
+    }
+  }
+  render() {
+    const { compact } = this.props
+    const { groups, socialLinks } = this.menus()
+    return (
+      <StyledFooter compact={compact}>
+        <div className="main">
+          <div className="logo">
+            <img src={logo} width="158" height="50" alt="Aragon" />
           </div>
-        )}
-        <ul className="social-links">
-          <li>
-            <a
-              href="https://twitter.com/AragonProject"
-              className="icon twitter"
-              target="_blank"
-            >
-              Twitter
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://blog.aragon.one/"
-              className="icon medium"
-              target="_blank"
-            >
-              Medium
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://aragon.chat/"
-              className="icon rocket"
-              target="_blank"
-            >
-              Community
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </StyledFooter>
-)
+          <div className="all-links">
+            {!compact && (
+              <div className="menus">
+                {groups.slice(0, 3).map((items, i) => (
+                  <nav key={i} className={`menu-${i + 1}`}>
+                    <ul>
+                      {items.map((item, i) => (
+                        <li key={i}>
+                          <FooterLink {...item} />
+                        </li>
+                      ))}
+                    </ul>
+                  </nav>
+                ))}
+              </div>
+            )}
+            {socialLinks.length > 0 && (
+              <ul className="social-links">
+                {socialLinks.map((item, i) => (
+                  <li key={i}>
+                    <FooterLink {...item} />
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+      </StyledFooter>
+    )
+  }
+}
 
 Footer.propTypes = {
   compact: PropTypes.bool,
+  menus: PropTypes.array,
 }
 
 Footer.defaultProps = {
   compact: false,
+  menus: [],
 }
 
 export default Footer
